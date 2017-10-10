@@ -169,9 +169,7 @@ function findChannelId(menu, title) {
 function searchBtnFun(){
     $(".topSearch button").on("click",function(){
     	var $url=escape($(".topSearch input").val());
-    	if($url==''){
-			alert("搜索值不能为空");
-    	}else{
+    	if($url !== ''){
     		window.open('./searchList.html?search='+$url, "_self");    		
     	}
     });

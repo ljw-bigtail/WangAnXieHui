@@ -121,7 +121,18 @@ $(function() {
 function initList(list,$dom1,$dom2,num){
     $dom1.empty();
     for(var a in list.list){
-        var $content=$("<li><div class='picPart'><img src='"+list.list[a].thumbnail+"'></div><div class='mesPart'><a href='./content.html?id=" + list.list[a].id +"'>"+list.list[a].title+"</a><span>"+list.list[a].conDate.split(/T/g)[0]+"</span><p>"+list.list[a].summary+"</p></div></li>");
+    	var $content = $("<li></li>");
+    	// 标题图
+    	$('<div class="picPart" style="background: url('+list.list[a].thumbnail+') center center no-repeat;background-size: contain;"><img></div>').appendTo($content);
+    	// 内容
+    	var $currentCon = $("<div class='mesPart'></div>").appendTo($content);
+    	// 标题
+    	$("<a href='./content.html?id=" + list.list[a].id +"'>"+list.list[a].title+"</a>").appendTo($currentCon);
+    	// date
+    	$("<span>"+list.list[a].conDate.split(/T/g)[0]+"</span>").appendTo($currentCon);
+    	// summary
+    	$("<p>"+list.list[a].summary+"</p>").appendTo($currentCon);
+    	
         $content.appendTo($dom1);
     }
     

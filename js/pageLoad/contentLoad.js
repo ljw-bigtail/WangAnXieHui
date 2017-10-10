@@ -67,10 +67,16 @@ $(function() {
         initBottomLink(configMenu);
 
         var thisLink = window.location.search;
-        var contentId = (thisLink.split("?id=").length>1) ? thisLink.split("?id=")[1].split("&")[0] : "";        
-        var channelId = (thisLink.split("?cId=").length>1) ? thisLink.split("?cId=")[1].split("&")[0] : "";
+        
+        if(thisLink.split("?id=").length !==0 && thisLink.split("?id=")[1] !== undefined){
+            var contentId = thisLink.split("?id=").length ? thisLink.split("?id=")[1].split("&")[0] : "";
+        }
+        
+        if(thisLink.split("?cId=").length !==0 && thisLink.split("?cId=")[1] !== undefined){
+            var channelId = thisLink.split("?cId=").length ? thisLink.split("?cId=")[1].split("&")[0] : "";
+        }
 
-        if(channelId !== ''){
+        if(channelId !== undefined && channelId!==""){
             var optChanl = {                
                 "channelId": channelId,
                 "search": "",
